@@ -1,0 +1,31 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Buku extends Model
+{
+    protected $table = 'buku';
+
+    protected $fillable = [
+        'judul', 'pengarang_id',
+        'penerbit_id', 'klasifikasi_id',
+        'bahasa', 'edisi', 'isbn', 'deskripsi', 'stok'
+    ];
+
+    public function klasifikasi()
+    {
+        return $this->belongsTo(Klasifikasi::class,'klasifikasi_id');
+    }
+
+    public function penerbit()
+    {
+        return $this->belongsTo(Penerbit::class, 'penerbit_id');
+    }
+
+    public function pengarang()
+    {
+        return $this->belongsTo(Pengarang::class,'pengarang_id');
+    }
+}
