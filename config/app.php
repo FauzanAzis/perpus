@@ -163,6 +163,7 @@ return [
         /*
          * Package Service Providers...
          */
+        App\Providers\MenuServiceProvider::class,
 
         /*
          * Application Service Providers...

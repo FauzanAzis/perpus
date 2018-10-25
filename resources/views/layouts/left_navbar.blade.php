@@ -9,7 +9,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Pengarang</a>
             <a class="dropdown-item" href="#">Penerbit</a>
-            <a class="dropdown-item" href="#">Klasifikasi</a>
+            <a class="dropdown-item" href="{{ route('klasifikasi.index') }}">Klasifikasi</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Buku</a>
         </div>
