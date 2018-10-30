@@ -81,27 +81,20 @@
 
         function del2(data, url) {
             swal({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                console.log(result)
-                if (result.value) {
+                title: "Yakin akan menghapus ID : "+ data +" ?",
+                text: "Setelah dihapus, data tidak dapat dikembalikan lagi!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
                     $.ajax({
                         url: url,
                         type: 'DELETE',
                         success: function(result) {
-                            swal({
-                                position: 'top-end',
-                                type: result.type,
-                                title: result.message,
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
+                            swal(result.message, {
+                                icon: result.type,
+                            });
                             refreshTable();
                         }
                     });
