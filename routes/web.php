@@ -21,10 +21,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->prefix('admin')->group(function () {
 
-    Route::prefix('klasifikasi')->group(function (){
-        Route::get('data','KlasifikasiController@data')->name('klasifikasi.data');
-        Route::resource('klasifikasi','KlasifikasiController')->names('klasifikasi');
-    });
+    Route::get('klasifikasi/data','KlasifikasiController@data')->name('klasifikasi.data');
+    Route::resource('klasifikasi','KlasifikasiController');
+
+    Route::get('penerbit/data','PenerbitController@data')->name('penerbit.data');
+    Route::resource('penerbit','PenerbitController');
 });
 
 
