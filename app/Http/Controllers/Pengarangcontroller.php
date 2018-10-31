@@ -84,7 +84,7 @@ class Pengarangcontroller extends Controller
     {
         $info['url_index'] = route('pengarang.index');
         $info['url_edit'] = $pengarang->url_edit;
-        $info['title'] = 'Lihat Data: '.$pengarang->nama_pengarang;
+        $info['title'] = 'LIHAT DATA PENGARANG: '.$pengarang->nama_pengarang;
         $row = $pengarang->load('buku') ;
 
         return view('admin.pengarang.show')
@@ -101,7 +101,7 @@ class Pengarangcontroller extends Controller
     public function edit(Pengarang $pengarang)
     {
         $info['url_index'] = route('pengarang.index');
-        $info['title'] = 'EDIT DATA : '. $pengarang->nama_pengarang;
+        $info['title'] = 'EDIT DATA PENGARANG: '. $pengarang->nama_pengarang;
         $row = $pengarang;
 
         return view('admin.pengarang.edit')
