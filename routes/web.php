@@ -26,6 +26,9 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::get('penerbit/data','PenerbitController@data')->name('penerbit.data');
     Route::resource('penerbit','PenerbitController');
+
+    Route::get('pengarang/data','Pengarangcontroller@data')->name('pengarang.data');
+    Route::resource('pengarang','Pengarangcontroller');
 });
 
 
