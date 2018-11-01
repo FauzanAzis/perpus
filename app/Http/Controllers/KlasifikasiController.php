@@ -79,7 +79,7 @@ class KlasifikasiController extends Controller
     {
         $info['url_index'] = route('klasifikasi.index');
         $info['url_edit'] = $klasifikasi->url_edit;
-        $info['title'] = 'Lihat Data: '.$klasifikasi->nama_klasifikasi;
+        $info['title'] = 'LIHAT DATA KLASIFIKASI: '.$klasifikasi->nama_klasifikasi;
         $row = $klasifikasi ;
 
         return view('admin.klasifikasi.show')

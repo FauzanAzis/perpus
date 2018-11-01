@@ -24,7 +24,21 @@ class BukuController extends Controller
 
                 return $result;
             })
+            ->editColumn('pengarang.nama_pengarang', function ($query){
+                $result = link_to($query->pengarang->url_show,$query->pengarang->nama_pengarang);
 
+                return $result;
+            })
+            ->editColumn('penerbit.nama_penerbit', function ($query){
+                $result = link_to($query->penerbit->url_show,$query->penerbit->nama_penerbit);
+
+                return $result;
+            })
+            ->editColumn('klasifikasi.nama_klasifikasi', function ($query){
+                $result = link_to($query->klasifikasi->url_show,$query->klasifikasi->nama_klasifikasi);
+
+                return $result;
+            })
             ->addColumn('action', function ($query) {
                 $actions =
                     '<a href="' . $query->url_show . '" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-eye-open"></i> Lihat</a> &nbsp;'.
@@ -33,8 +47,8 @@ class BukuController extends Controller
 
                 return $actions;
             })
-            ->escapeColumns(['1'])
-            ->make(true);
+            ->escapeColumns(['pengarang.nama_pengarang','penerbit.nama_penerbit','klasifikasi.nama_klasifikasi'])
+            ->make();
 
         return $datatables;
     }

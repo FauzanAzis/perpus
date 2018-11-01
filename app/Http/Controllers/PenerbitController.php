@@ -82,7 +82,7 @@ class PenerbitController extends Controller
     {
         $info['url_index'] = route('penerbit.index');
         $info['url_edit'] = $penerbit->url_edit;
-        $info['title'] = 'Lihat Data: '.$penerbit->nama_penerbit;
+        $info['title'] = 'LIHAT DATA PENERBIT: '.$penerbit->nama_penerbit;
         $row = $penerbit->load('buku') ;
 
         return view('admin.penerbit.show')
