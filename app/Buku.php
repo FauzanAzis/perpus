@@ -14,6 +14,26 @@ class Buku extends Model
         'bahasa', 'edisi', 'isbn', 'deskripsi', 'stok'
     ];
 
+    public function getUrlShowAttribute($value)
+    {
+        return route('buku.show',$this->id);
+    }
+
+    public function getUrlEditAttribute($value)
+    {
+        return route('buku.edit',$this->id);
+    }
+
+    public function getUrlUpdateAttribute($value)
+    {
+        return route('buku.update',$this->id);
+    }
+
+    public function getUrlDestroyAttribute($value)
+    {
+        return route('buku.destroy',$this->id);
+    }
+
     public function klasifikasi()
     {
         return $this->belongsTo(Klasifikasi::class,'klasifikasi_id');

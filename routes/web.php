@@ -29,6 +29,9 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::get('pengarang/data','Pengarangcontroller@data')->name('pengarang.data');
     Route::resource('pengarang','Pengarangcontroller');
+
+    Route::get('buku/data','BukuController@data')->name('buku.data');
+    Route::resource('buku','BukuController');
 });
 
 
