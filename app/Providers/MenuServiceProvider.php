@@ -35,6 +35,11 @@ class MenuServiceProvider extends ServiceProvider
             $event->menu->add([
                 'text' => 'Pengarang',
                 'route' => 'pengarang.index',
+                'icon' => 'male'
+            ]);
+            $event->menu->add([
+                'text' => 'Anggota',
+                'route' => 'anggota.index',
                 'icon' => 'users'
             ]);
         });

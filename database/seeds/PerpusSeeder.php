@@ -11,6 +11,7 @@ class PerpusSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Buku::class,30)->create();
+        factory(\App\Buku::class,10)->create();
+        factory(\App\Anggota::class,10)->create();
     }
 }

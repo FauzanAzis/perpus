@@ -12,10 +12,9 @@
 */
 
 Route::get('/', function () {
+    return str_singular('anggota');
     return view('welcome');
 });
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -32,6 +31,11 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::get('buku/data','BukuController@data')->name('buku.data');
     Route::resource('buku','BukuController');
+
+    Route::get('anggota/data','AnggotaController@data')->name('anggota.data');
+    Route::resource('anggota','AnggotaController',['parameters' => [
+        'anggota' => 'anggota'
+    ]]);
 });
 
 
