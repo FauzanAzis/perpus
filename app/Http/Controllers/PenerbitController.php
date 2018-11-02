@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Penerbit;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
 use Yajra\DataTables\DataTables;
 
 class PenerbitController extends Controller
@@ -137,9 +136,17 @@ class PenerbitController extends Controller
     {
         try {
 
-            Schema::disableForeignKeyConstraints();
+            if ($penerbit->BukuAda()) {
+                $message = [
+                    'success' => false,
+                    'type' => 'error',
+                    'title' => 'Delete',
+                    'message' => 'Maaf! Data tidak dapat dihapus, karena sedang digunakan.',
+                ];
+                return response()->json($message);
+            }
+
             $penerbit->delete();
-            Schema::enableForeignKeyConstraints();
 
             $message = [
                 'success' => true,

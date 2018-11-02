@@ -41,4 +41,9 @@ class Pengarang extends Model
     {
         return $this->hasMany(Buku::class, 'pengarang_id');
     }
+
+    public function scopeBukuAda($query)
+    {
+        return $this->buku()->exists();
+    }
 }

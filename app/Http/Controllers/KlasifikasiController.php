@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Klasifikasi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
 use Yajra\DataTables\DataTables;
 
 class KlasifikasiController extends Controller
@@ -129,14 +128,20 @@ class KlasifikasiController extends Controller
     public function destroy(Klasifikasi $klasifikasi)
     {
         try {
-
-            Schema::disableForeignKeyConstraints();
+            if ($klasifikasi->BukuAda()) {
+                $message = [
+                    'success' => false,
+                    'type' => 'error',
+                    'title' => 'Delete',
+                    'message' => 'Maaf! Data tidak dapat dihapus, karena sedang digunakan.',
+                ];
+                return response()->json($message);
+            }
             $klasifikasi->delete();
-            Schema::enableForeignKeyConstraints();
 
             $message = [
                 'success' => true,
-                'title' => 'Update',
+                'title' => 'Delete',
                 'type' => 'success',
                 'message' => 'Selamat! Data ['.$klasifikasi->nama_klasifikasi.'] berhasil dihapus.'
             ];
@@ -146,8 +151,8 @@ class KlasifikasiController extends Controller
             $message = [
                 'success' => false,
                 'type' => 'error',
-                'title' => 'Update',
-                'message' => 'Maaf! Data gagal dihapus.',
+                'title' => 'Delete',
+                'message' => 'Maaf! Data gagal dihapus. ' . $exception->getMessage(),
                 'data' => $exception->getMessage()
             ];
             return response()->json($message);

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Pengarang;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
 use Yajra\DataTables\DataTables;
 
 class Pengarangcontroller extends Controller
@@ -138,9 +137,17 @@ class Pengarangcontroller extends Controller
     {
         try {
 
-            Schema::disableForeignKeyConstraints();
+            if ($pengarang->BukuAda()) {
+                $message = [
+                    'success' => false,
+                    'type' => 'error',
+                    'title' => 'Delete',
+                    'message' => 'Maaf! Data tidak dapat dihapus, karena sedang digunakan.',
+                ];
+                return response()->json($message);
+            }
+
             $pengarang->delete();
-            Schema::enableForeignKeyConstraints();
 
             $message = [
                 'success' => true,

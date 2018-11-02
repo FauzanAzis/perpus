@@ -45,6 +45,11 @@ class Klasifikasi extends Model
         return route('klasifikasi.destroy',$this->id);
     }
 
+    public function scopeBukuAda($query)
+    {
+        return $this->buku()->exists();
+    }
+
     public static function boot()
     {
         parent::boot();

@@ -41,4 +41,9 @@ class Penerbit extends Model
     {
         return route('penerbit.destroy',$this->id);
     }
+
+    public function scopeBukuAda($query)
+    {
+        return $this->buku()->exists();
+    }
 }
